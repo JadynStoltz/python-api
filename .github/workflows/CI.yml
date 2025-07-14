@@ -26,7 +26,7 @@ jobs:
         tags: ${{ github.actor }}/${{ env.IMAGE_NAME }}:${{ github.run_number }}
 
     - name: Repository Dispatch
-      uses: peer-evans/repository-dispatch@main
+      uses: peter-evans/repository-dispatch@v1
       with:
         token: ${{ secrets.PAT }}
         repository: ${{ github.actor }}/argocd-python-api-config
