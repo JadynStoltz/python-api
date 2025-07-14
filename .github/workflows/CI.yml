@@ -2,6 +2,7 @@ name: CI
 
 on:
   workflow_dispatch:
+
 env:
   IMAGE_NAME: examplenode-dev
 
@@ -23,7 +24,7 @@ jobs:
       with:  
         context: .
         push: true
-        tags: ${{ github.actor }}/${{ env.IMAGE_NAME }}:${{ github.run_number }}
+        tags: docker.io/${{ secrets.DOCKERHUB_USERNAME }}/${{ env.IMAGE_NAME }}:${{ github.run_number }}
 
     - name: Repository Dispatch
       uses: peter-evans/repository-dispatch@v1
@@ -31,4 +32,4 @@ jobs:
         token: ${{ secrets.PAT }}
         repository: ${{ github.actor }}/argocd-python-api-config
         event-type: new-image
-        client-payload: '{"image": "${{ github.actor }}/${{ env.IMAGE_NAME }}:${{ github.run_number }}"}'
+        client-payload: '{"image": "docker.io/${{ secrets.DOCKERHUB_USERNAME }}/${{ env.IMAGE_NAME }}:${{ github.run_number }}"}'
