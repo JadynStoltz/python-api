@@ -2,11 +2,14 @@ FROM python:3.10-slim
 
 WORKDIR /django-app
 
-COPY django-app/requirements.txt requirements.txt
+# Copy requirements file first
+COPY python-api/django-app/requirements.txt requirements.txt
 
+# Install dependencies
 RUN pip install --no-cache-dir -r requirements.txt
 
-COPY django-app/ .
+# Copy the rest of the app
+COPY python-api/django-app/ .
 
 EXPOSE 8000
 
