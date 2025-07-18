@@ -9,6 +9,7 @@ class User(models.Model):
     def __str__(self):
         return self.name
     
+# Employee model to store employee details
 class Employee(models.Model):
     name = models.CharField(max_length=20)
     surname = models.CharField(max_length=20)
